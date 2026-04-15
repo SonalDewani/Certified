@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <title>Certified</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+{% if user.is_authenticated %}
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Certified</h2>
+
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+
+        {% if user.role == 'admin' %}
+            <a href="{% url 'create_manager' %}">Managers</a>
+        {% endif %}
+
+        {% if user.role == 'manager' %}
+            <a href="{% url 'create_user' %}">Users</a>
+        {% endif %}
+
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <h3>Welcome, {{ user.username }}</h3>
+        </div>
+
+{% endif %}
+
+<!-- ✅ ONLY ONE BLOCK IN WHOLE FILE -->
+{% block content %}{% endblock %}
+
+{% if user.is_authenticated %}
+    </div>
+</div>
+{% endif %}
+
+</body>
+</html>
