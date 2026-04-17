@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Seminars</h2>
+
+<div class="grid">
+    {% for seminar in seminars %}
+    <div class="card">
+        <h3>{{ seminar.title }}</h3>
+        <p><strong>Seminar Topic:</strong> {{ seminar.topic }}</p>
+        <p><strong>Date:</strong> {{ seminar.date_time }}</p>
+        <p><strong>Location:</strong> {{ seminar.location }}</p>
+        <a href="{% url 'register_seminar' seminar.id %}" class="btn">
+            Register
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

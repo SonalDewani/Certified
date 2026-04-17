@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserCreateForm
+from .forms import UserCreateForm, ProfileUpdateForm
 from .forms import ManagerCreateForm
 from .decorators import role_required
 from django.template import loader
 from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+
 
 
 def home(request):
@@ -31,6 +35,31 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def profile_view(request):
+    return render(request, 'profile.html', {
+        'user': request.user
+    })
+
+
+@login_required
+def edit_profile(request):
+    form = ProfileUpdateForm(request.POST or None, instance=request.user)
+
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, "Profile updated successfully")
+        return redirect('profile')
+
+    return render(request, 'edit_profile.html', {'form': form})
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'change_password.html'
+    success_url = reverse_lazy('profile')
+
 
 
 @login_required

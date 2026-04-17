@@ -3,11 +3,11 @@
 ========================= */
 
 :root {
-    --primary: #22223b;
-    --secondary: #4a4e69;
-    --accent: #c9ada7;
-    --muted: #9a8c98;
-    --bg: #f2e9e4;
+    --primary: #131515;
+    --secondary: #246a73;
+    --accent: #368f8b;
+    --muted: #f3dfc1;
+    --bg: #ddbea8;
     --white: #ffffff;
 }
 
@@ -110,6 +110,7 @@ body {
     border-radius: 6px;
     text-decoration: none;
     transition: 0.3s;
+    margin:10px;
 }
 
 .btn:hover {
@@ -155,6 +156,7 @@ table th {
     background: var(--secondary);
     color: var(--white);
     padding: 12px;
+    text-align:left;
 }
 
 table td {

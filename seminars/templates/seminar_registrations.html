@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Registrations for {{ seminar.title }}</h2>
+
+<table>
+    <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>Registered At</th>
+    </tr>
+
+    {% for reg in registrations %}
+    <tr>
+        <td>{{ reg.user.username }}</td>
+        <td>{{ reg.user.email }}</td>
+        <td>{{ reg.registered_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
