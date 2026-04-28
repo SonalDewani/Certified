@@ -8,6 +8,8 @@
         <th>User</th>
         <th>Email</th>
         <th>Registered At</th>
+        <th>Status</th>
+        <th>Action</th>
     </tr>
 
     {% for reg in registrations %}
@@ -15,6 +17,27 @@
         <td>{{ reg.user.username }}</td>
         <td>{{ reg.user.email }}</td>
         <td>{{ reg.registered_at }}</td>
+        <td>
+        {% if reg.attended %}
+        ✔ Present
+        {% else %}
+        ❌ Absent
+        {% endif %}
+        </td>
+
+        <td>
+            {% if seminar.attendance_open %}
+                {% if not reg.attended %}
+                    <a href="{% url 'generate_attendance_qr' seminar.id %}">
+                        Generate Attendance QR
+                    </a>
+                {% else %}
+                    Already Marked
+                {% endif %}
+            {% else %}
+            Attendance Closed
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
 </table>

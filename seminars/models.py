@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
+import uuid
 
 User = settings.AUTH_USER_MODEL
 
@@ -10,8 +13,71 @@ class Seminar(models.Model):
     description = models.TextField()
     date_time = models.DateTimeField(null=True)
     location = models.CharField(max_length=255)
-
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    @property
+    def status(self):
+        now = timezone.now()
+
+        if self.date_time.date() > now.date():
+            return "Upcoming"
+
+        elif self.date_time.date() == now.date():
+            return "Ongoing"
+
+        else:
+            return "Completed"
+
+    @property
+    def registration_open(self):
+
+        now = timezone.now()
+
+        # registration open only BEFORE seminar starts
+        return now < self.date_time
+
+    @property
+    def attendance_open(self):
+
+        return self.status == "Upcoming" or self.status == "Ongoing"
+
+    # Certificates
+    certificate_enabled = models.BooleanField(default=True)
+
+    certificate_title = models.CharField(
+        max_length=200,
+        default='Certificate of Participation'
+    )
+
+    certificate_logo_left = models.ImageField(
+        upload_to='certificate_logos/',
+        blank=True,
+        null=True
+    )
+
+    certificate_logo_right = models.ImageField(
+        upload_to='certificate_logos/',
+        blank=True,
+        null=True
+    )
+
+    certificate_signature = models.ImageField(
+        upload_to='certificate_signatures/',
+        blank=True,
+        null=True
+    )
+
+    attendance_code = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True
+    )
+
+    attendance_code_created_at = models.DateTimeField(
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.title
@@ -19,10 +85,22 @@ class Seminar(models.Model):
 
 class SeminarRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    seminar = models.ForeignKey(Seminar, on_delete=models.CASCADE)
+    seminar = models.ForeignKey(Seminar, on_delete=models.CASCADE, related_name='registrations')
 
     registered_at = models.DateTimeField(auto_now_add=True)
     id_card = models.FileField(upload_to='id_cards/', null=True, blank=True)
+
+    attended = models.BooleanField(default=False)
+
+    attendance_marked_at = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+    verification_token = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        editable=False
+    )
 
     class Meta:
         unique_together = ('user', 'seminar')  # 🚀 prevents duplicate

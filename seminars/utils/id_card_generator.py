@@ -3,6 +3,7 @@ import qrcode
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 from django.conf import settings
+from Certified import settings
 
 
 def generate_id_card(user, seminar, registration):
@@ -42,7 +43,9 @@ def generate_id_card(user, seminar, registration):
     c.drawString(120, 310, str(registration.id))
 
     # QR Code (with verification URL)
-    qr_data = f"{registration.id}"
+    qr_data = (
+        f"{settings.Base_Url}/seminars/verify/idcard/{registration.verification_token}/"
+    )
     qr = qrcode.make(qr_data)
 
     qr_path = os.path.join(settings.MEDIA_ROOT, f"qr_{registration.id}.png")

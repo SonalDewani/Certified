@@ -11,6 +11,7 @@
         <th>Topic</th>
         <th>Date</th>
         <th>Location</th>
+        <th>Status</th>
         <th>Actions</th>
     </tr>
 
@@ -20,9 +21,13 @@
         <td>{{ seminar.topic }}</td>
         <td>{{ seminar.date_time }}</td>
         <td>{{ seminar.location }}</td>
+        <td>{{ seminar.status }}</td>
         <td>
         <a href="{% url 'seminar_registrations' seminar.id %}" class="btn">
                 View Registrations
+        </a>
+            <a href="{% url 'generate_attendance_qr' seminar.id %}" class="btn">
+                Attendance QR
         </a>
         </td>
     </tr>
