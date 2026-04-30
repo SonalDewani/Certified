@@ -1,3 +1,4 @@
+import threading
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, SetPasswordForm
@@ -82,20 +83,32 @@ def dashboard_view(request):
         return render(request, 'user_dashboard.html')
 
 
+def send_set_password_email_async(request, user):
+    try:
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+
+        link = request.build_absolute_uri(
+            reverse('set-password', kwargs={'uidb64': uid, 'token': token})
+        )
+
+        send_mail(
+            subject='From Certifier: Set your password',
+            message=f'Hi {user.first_name},\n\nYour Username is {user.username}\n\nClick the link to set your password:\n{link}',
+            from_email='your_email@gmail.com',
+            recipient_list=[user.email],
+        )
+
+    except Exception as e:
+        print("Set password email failed:", e)
+
+
 def send_set_password_email(request, user):
-    uid = urlsafe_base64_encode(force_bytes(user.pk))
-    token = default_token_generator.make_token(user)
-
-    link = request.build_absolute_uri(
-        reverse('set-password', kwargs={'uidb64': uid, 'token': token})
+    thread = threading.Thread(
+        target=send_set_password_email_async,
+        args=(request, user)
     )
-
-    send_mail(
-        subject='From Sertifier Set your password',
-        message=f'Hi {user.first_name},\n\n Your Username is {user.username} \n\nClick the link to set your password:\n{link}',
-        from_email='your_email@gmail.com',
-        recipient_list=[user.email],
-    )
+    thread.start()
 
 
 @login_required

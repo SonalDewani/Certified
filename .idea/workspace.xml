@@ -6,33 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dc48fe1e-9c25-40b7-bc0e-2e0a68c302b4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Certified/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Certified/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Certified/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Certified/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/admin_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/auth_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/auth_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/manager_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/manager_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/templates/user_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/templates/user_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certificates/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/certificates/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certificates/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/certificates/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/templates/create_seminar.html" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/templates/create_seminar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/templates/manager_seminars.html" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/templates/manager_seminars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/templates/seminar_registrations.html" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/templates/seminar_registrations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/templates/user_seminars.html" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/templates/user_seminars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/utils/id_card_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/utils/id_card_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seminars/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminars/utils/email_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/seminars/utils/email_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
